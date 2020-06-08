@@ -173,7 +173,7 @@ def plot_axial(data, vb, vc, vt):
 # standard()
 # fullcore()
 # Plot detector output
-data = st.read('fullcoreB_det1b1.m', reader='det')
+data = st.read('bw/fullcore_det1b1.m', reader='det')
 # Plot spectrum
 # name = 'EnergyDetector'
 # plot_spectrum(data, name)
