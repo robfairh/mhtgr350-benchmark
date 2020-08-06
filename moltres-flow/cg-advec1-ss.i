@@ -64,9 +64,8 @@ velocity = 0.5
 [Materials]
   [./coolant]
     type = GenericConstantMaterial
-    prop_names = 'k cp rho'
-    #prop_values = '1 2e3 1e-2'
-    prop_values = '1e4 2e3 1e-2'
+    prop_names = 'cp rho'
+    prop_values = '2e3 1e-2'
   [../]
 
   [./heat]

@@ -12,9 +12,10 @@ velocity = 0.5
 
 [Variables]
   [./temp]
-    order = FIRST
-    family = LAGRANGE
+    order = CONSTANT
+    family = MONOMIAL
     initial_condition = 930
+    fv = true
   [../]
 []
 
@@ -23,14 +24,13 @@ velocity = 0.5
     type = MatINSTemperatureTimeDerivative
     variable = temp
   [../]
-  [./advection]
-    type = ConservativeTemperatureAdvection
+[]
+
+[DGKernels]
+  [./temp_adv]
+    type = DGTemperatureAdvection
+    variable = temp
     velocity = '0 ${velocity} 0'
-    variable = temp
-  [../]
-  [./Diffusion]
-    type = AnisoHeatConduction
-    variable = temp
   [../]
 []
 
@@ -71,14 +71,6 @@ velocity = 0.5
     prop_names = 'cp rho'
     prop_values = '2e3 1e-2'
   [../]
-
-  [./heat]
-    type = AnisoHeatConductionMaterial
-    specific_heat = 1
-    thermal_conductivity_x = 1e3
-    thermal_conductivity_y = 0
-    thermal_conductivity_z = 0
-  [../]
 []
 
 [Executioner]
@@ -89,14 +81,15 @@ velocity = 0.5
     type = ConstantDT
     dt = 1
   [../]
-  
-  nl_rel_tol = 1e-6
-  nl_abs_tol = 1e-5
+
+  nl_rel_tol = 1e-7
+  nl_abs_tol = 1e-7
   solve_type = 'NEWTON'
 
-  # petsc_options = '-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor'
-  # petsc_options_iname = '-pc_type -sub_pc_type -pc_asm_overlap -sub_ksp_type -snes_linesearch_minlambda'
-  # petsc_options_value = 'asm      lu           1               preonly       1e-3'
+  petsc_options = '-snes_converged_reason -ksp_converged_reason -snes_linesearch_monitor'
+  petsc_options_iname = '-pc_type -sub_pc_type -pc_asm_overlap -sub_ksp_type -snes_linesearch_minlambda'
+  petsc_options_value = 'asm      lu           1               preonly       1e-3'
+
   # nl_max_its = 30
   # l_max_its = 100
 []
@@ -109,39 +102,19 @@ velocity = 0.5
 []
 
 [VectorPostprocessors]
-  [./center]
+  [./axial]
     type = LineValueSampler
     variable = 'temp'
-    start_point = '0 0 0'
-    end_point = '0 100 0'
+    start_point = '1 0 0'
+    end_point = '1 100 0'
     sort_by = y
-    num_points = 100
-    execute_on = final
-  [../]
-
-  [./outer]
-    type = LineValueSampler
-    variable = 'temp'
-    start_point = '2 0 0'
-    end_point = '2 100 0'
-    sort_by = y
-    num_points = 100
-    execute_on = final
-  [../]
-
-  [./across]
-    type = LineValueSampler
-    variable = 'temp'
-    start_point = '0 50 0'
-    end_point = '2 50 0'
-    sort_by = x
-    num_points = 10
-    execute_on = final
+    num_points = 200
+    execute_on = 'initial final'
   [../]
 []
 
 [Outputs]
-  file_base = 'cg-advec1-t'
+  file_base = 'dg-advec1-t'
   execute_on = 'timestep_end'
   exodus = true
   # csv = true
