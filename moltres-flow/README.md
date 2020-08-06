@@ -22,8 +22,12 @@
 * fv-tempadvection2D:
 	- solves advection equation for the temperature in pseudo-1D
 	- uses finite volume kernels
-	- uses a neumann function: segfault
+	- works until the volumetric source once I change it by the
+	  neumann function: segfault
 
 * fv-tempadvection2DB:
 	- solves advection equation for the temperature in 2D for 3 materials.
 	- uses finite volume kernels and cg
+	- segfault
+
+Look for another example

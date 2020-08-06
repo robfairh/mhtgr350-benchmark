@@ -36,10 +36,17 @@
     cp = 2e3
   [../]
   [force]
-   type = FVBodyForce
-   variable = v
-   function = 'heat_source'
+    type = FVBodyForce
+    variable = v
+    function = 'heat_source'
   []
+[]
+
+[Functions]
+  [./heat_source]
+    type = ParsedFunction
+    value = '1 * sin( pi/100 * y)'
+  [../]
 []
 
 [FVBCs]
@@ -61,19 +68,12 @@
 
 # [BCs]
 #   [./heat_wall]
-#     boundary = right
+#     boundary = 'right'
 #     type = FunctionNeumannBC
-#     variable = v
-#     function = 'heat_source'
+#     variable = temp
+#     function = 'heat_flux'
 #   [../]
 # []
-
-[Functions]
-  [./heat_source]
-    type = ParsedFunction
-    value = '10 * sin( pi/100 * y)'
-  [../]
-[]
 
 [Executioner]
   type = Transient
