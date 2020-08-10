@@ -6,12 +6,12 @@
 	- Pseudo 1D problem
 	- uses discontinuous galerkin methods
 
-* fv-burguers:
-	- solves burgers in 1D
-	- uses finite volume kernels
-
 * fv-advection:
 	- solves advection equation in 1D
+	- uses finite volume kernels
+
+* fv-burguers:
+	- solves burgers in 1D
 	- uses finite volume kernels
 
 * fv-tempadvection:
@@ -22,12 +22,25 @@
 * fv-tempadvection2D:
 	- solves advection equation for the temperature in pseudo-1D
 	- uses finite volume kernels
-	- works until the volumetric source once I change it by the
-	  neumann function: segfault
+	- works until the volumetric source
+	- if I change it by the neumann function: segfault
 
-* fv-tempadvection2DB:
-	- solves advection equation for the temperature in 2D for 3 materials.
+* fv-tempdiffusion2D:
+	- solves diffusion equation for the temperature in 2D.
+	- uses finite volume kernels
+
+* fv-temp2D:
+	- solves advection equation for the temperature in 2D for 2 materials.
+	- one material diffuses and the other one advects.
+	- uses finite volume kernels
+
+* fv-temp2DC:
+	- solves advection equation for the temperature in 2D for 2 materials.
 	- uses finite volume kernels and cg
 	- segfault
 
-Look for another example
+Compressible flow
+* cg-cns: tries to implement CNS Action
+* cg-cns2: tries to implement CNS Action using kernels
+
+* fv-euler1: tries to implement euler equations

@@ -13,7 +13,7 @@
 []
 
 [Variables]
-  [./v]
+  [./temp]
     family = MONOMIAL
     order = CONSTANT
     initial_condition = 930
@@ -24,20 +24,20 @@
 [FVKernels]
   [./time]
     type = MatFVTimeKernel
-    variable = v
+    variable = temp
     rho = 1e-2
     cp = 2e3
   [../]
   [./advection]
     type = MatFVAdvection
-    variable = v
+    variable = temp
     velocity = '0 0.5 0'
     rho = 1e-2
     cp = 2e3
   [../]
   [force]
     type = FVBodyForce
-    variable = v
+    variable = temp
     function = 'heat_source'
   []
 []
@@ -53,14 +53,14 @@
   [./fv_outflow]
     type = MatFVConstantScalarOutflowBC
     velocity = '0 0.5 0'
-    variable = v
+    variable = temp
     boundary = top
     rho = 1e-2
     cp = 2e3
   [../]
   [left]
     type = FVDirichletBC
-    variable = v
+    variable = temp
     boundary = bottom
     value = 930
   []
@@ -87,5 +87,6 @@
 []
 
 [Outputs]
+  # file_base = 'fv_tempadvectio2D'
   exodus = true
 []
