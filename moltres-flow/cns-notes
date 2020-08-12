@@ -1,0 +1,378 @@
+//////////////// add_navier_stokes_variables
+_problem->addVariable(var_type, NS::momentum_x, params);
+_problem->addVariable(var_type, NS::total_energy, params);
+
+_problem->addAuxVariable(var_type, NS::velocity_x, base_params);
+_problem->addAuxVariable(var_type, NS::pressure, base_params);
+_problem->addAuxVariable(var_type, NS::temperature, base_params);
+_problem->addAuxVariable(var_type, NS::enthalpy, base_params);
+_problem->addAuxVariable(var_type, NS::mach_number, base_params);
+_problem->addAuxVariable(var_type, NS::internal_energy, base_params);
+_problem->addAuxVariable(var_type, NS::specific_volume, base_params);
+
+//////////////// add_navier_stokes_kernels
+const std::string kernel_type = "TimeDerivative";
+_problem->addKernel(kernel_type, NS::density + "_time_deriv", params);
+_problem->addKernel(kernel_type, NS::momentum_x + "_time_deriv", params);
+_problem->addKernel(kernel_type, NS::total_energy + "_time_deriv", params);
+
+// Mass
+const std::string kernel_type = "NSMassInviscidFlux";
+params.set<NonlinearVariableName>("variable") = NS::density;
+params.set<CoupledName>(NS::density) = {NS::density};
+params.set<CoupledName>(NS::total_energy) = {NS::total_energy};
+params.set<CoupledName>(NS::velocity_x) = {NS::velocity_x};
+params.set<CoupledName>(NS::momentum_x) = {NS::momentum_x};
+params.set<UserObjectName>("fluid_properties") = _fp_name;
+_problem->addKernel(kernel_type, "rho_if", params);}
+
+const std::string kernel_type = "NSSUPGMass";
+params.set<NonlinearVariableName>("variable") = NS::density;
+params.set<CoupledName>(NS::density) = {NS::density};
+params.set<CoupledName>(NS::total_energy) = {NS::total_energy};
+params.set<CoupledName>(NS::velocity_x) = {NS::velocity_x};
+params.set<CoupledName>(NS::momentum_x) = {NS::momentum_x};
+params.set<UserObjectName>("fluid_properties") = _fp_name;
+params.set<CoupledName>(NS::temperature) = {NS::temperature};
+params.set<CoupledName>(NS::enthalpy) = {NS::enthalpy};
+_problem->addKernel(kernel_type, "rho_supg", params);
+
+// Momentum
+const std::string kernel_type = "NSMomentumInviscidFlux";
+const static std::string momentums[3] = {NS::momentum_x, NS::momentum_y, NS::momentum_z};
+params.set<NonlinearVariableName>("variable") = momentums[component];
+params.set<CoupledName>(NS::density) = {NS::density};
+params.set<CoupledName>(NS::total_energy) = {NS::total_energy};
+params.set<CoupledName>(NS::velocity_x) = {NS::velocity_x};
+params.set<CoupledName>(NS::momentum_x) = {NS::momentum_x};
+params.set<UserObjectName>("fluid_properties") = _fp_name;
+params.set<CoupledName>("pressure") = {NS::pressure};
+params.set<unsigned int>("component") = component;
+_problem->addKernel(kernel_type, momentums[component] + std::string("if"), params);
+
+const static std::string momentums[3] = {NS::momentum_x, NS::momentum_y, NS::momentum_z};
+const std::string kernel_type = "NSSUPGMomentum";
+params.set<NonlinearVariableName>("variable") = momentums[component];
+params.set<CoupledName>(NS::density) = {NS::density};
+params.set<CoupledName>(NS::total_energy) = {NS::total_energy};
+params.set<CoupledName>(NS::velocity_x) = {NS::velocity_x};
+params.set<CoupledName>(NS::momentum_x) = {NS::momentum_x};
+params.set<UserObjectName>("fluid_properties") = _fp_name;
+params.set<CoupledName>(NS::temperature) = {NS::temperature};
+params.set<CoupledName>(NS::enthalpy) = {NS::enthalpy};
+params.set<unsigned int>("component") = component;
+_problem->addKernel(kernel_type, momentums[component] + std::string("_supg"), params);
+
+// Energy
+const std::string kernel_type = "NSEnergyInviscidFlux";
+params.set<NonlinearVariableName>("variable") = NS::total_energy;
+params.set<CoupledName>(NS::density) = {NS::density};
+params.set<CoupledName>(NS::total_energy) = {NS::total_energy};
+params.set<CoupledName>(NS::velocity_x) = {NS::velocity_x};
+params.set<CoupledName>(NS::momentum_x) = {NS::momentum_x};
+params.set<UserObjectName>("fluid_properties") = _fp_name;
+params.set<CoupledName>(NS::enthalpy) = {NS::enthalpy};
+_problem->addKernel(kernel_type, "rhoE_if", params);
+
+const std::string kernel_type = "NSSUPGEnergy";
+params.set<NonlinearVariableName>("variable") = NS::total_energy;
+params.set<CoupledName>(NS::density) = {NS::density};
+params.set<CoupledName>(NS::total_energy) = {NS::total_energy};
+params.set<CoupledName>(NS::velocity_x) = {NS::velocity_x};
+params.set<CoupledName>(NS::momentum_x) = {NS::momentum_x};
+params.set<UserObjectName>("fluid_properties") = _fp_name;
+params.set<CoupledName>(NS::temperature) = {NS::temperature};
+params.set<CoupledName>(NS::enthalpy) = {NS::enthalpy};
+_problem->addKernel(kernel_type, "rhoE_supg", params);
+
+//////////////// add AuxKernels.
+InputParameters params = _factory.getValidParams("PressureAux");
+std::string var_name = NS::pressure;
+params.set<AuxVariableName>("variable") = var_name;
+params.set<CoupledName>("e") = {NS::internal_energy};
+params.set<CoupledName>("v") = {NS::specific_volume};
+params.set<UserObjectName>("fp") = _fp_name;
+_problem->addAuxKernel(kernel_type, var_name + "_auxkernel", params);
+
+InputParameters params = _factory.getValidParams("TemperatureAux");
+std::string var_name = NS::temperature;
+params.set<AuxVariableName>("variable") = var_name;
+params.set<CoupledName>("e") = {NS::internal_energy};
+params.set<CoupledName>("v") = {NS::specific_volume};
+params.set<UserObjectName>("fp") = _fp_name;
+_problem->addAuxKernel(kernel_type, var_name + "_auxkernel", params);
+
+const std::string kernel_type = "EnthalpyAux";
+InputParameters params = _factory.getValidParams(kernel_type);
+params.set<AuxVariableName>("variable") = NS::enthalpy;
+params.set<CoupledName>("rho") = {NS::density};
+params.set<CoupledName>("rho_et") = {NS::total_energy};
+params.set<CoupledName>("pressure") = {NS::pressure};
+_problem->addAuxKernel(kernel_type, "enthalpy_auxkernel", params);
+
+const std::string kernel_type = "NSMachAux";
+InputParameters params = _factory.getValidParams(kernel_type);
+params.set<AuxVariableName>("variable") = NS::mach_number;
+params.set<CoupledName>(NS::internal_energy) = {NS::internal_energy};
+params.set<CoupledName>(NS::specific_volume) = {NS::specific_volume};
+params.set<CoupledName>(NS::velocity_x) = {NS::velocity_x};
+params.set<UserObjectName>("fluid_properties") = _fp_name;
+_problem->addAuxKernel(kernel_type, "mach_auxkernel", params);
+
+const std::string kernel_type = "NSInternalEnergyAux";
+InputParameters params = _factory.getValidParams(kernel_type);
+params.set<AuxVariableName>("variable") = NS::internal_energy;
+params.set<CoupledName>(NS::density) = {NS::density};
+params.set<CoupledName>(NS::total_energy) = {NS::total_energy};
+params.set<CoupledName>(NS::velocity_x) = {NS::velocity_x};
+_problem->addAuxKernel(kernel_type, "internal_energy_auxkernel", params);
+
+const std::string kernel_type = "ParsedAux";
+params.set<AuxVariableName>("variable") = NS::specific_volume;
+params.set<CoupledName>("args") = {NS::density};
+std::string function = "if(" + NS::density + " = 0, 1e10, 1 / " + NS::density + ")";
+params.set<std::string>("function") = function;
+_problem->addAuxKernel(kernel_type, "specific_volume_auxkernel", params);
+
+const std::string kernel_type = "NSVelocityAux";
+const static std::string velocities[3] = {NS::velocity_x, NS::velocity_y, NS::velocity_z};
+const static std::string momentums[3] = {NS::momentum_x, NS::momentum_y, NS::momentum_z};
+InputParameters params = _factory.getValidParams(kernel_type);
+params.set<AuxVariableName>("variable") = velocities[component];
+params.set<CoupledName>(NS::density) = {NS::density};
+params.set<CoupledName>("momentum") = {momentums[component]};
+params.set<UserObjectName>("fluid_properties") = _fp_name;
+_problem->addAuxKernel(kernel_type, velocities[component] + "_auxkernel", params);
+
+//////////////// add_navier_stokes_bcs
+if (_static_pressure_boundary.size() > 0)
+{
+  addNSMassUnspecifiedNormalFlowBC();
+  addNSEnergyInviscidSpecifiedPressureBC();
+  for (unsigned int component = 0; component < _dim; ++component)
+    addNSMomentumInviscidSpecifiedPressureBC(component);
+}
+
+//////////////// add_navier_stokes_ics
+    vars.push_back(NS::density);
+    vars.push_back(NS::momentum_x);
+    vars.push_back(NS::total_energy);
+    {
+      InputParameters params = _factory.getValidParams("NSInitialCondition");
+      params.set<VariableName>("variable") = name;
+      params.set<Real>("initial_pressure") = _initial_pressure;
+      params.set<Real>("initial_temperature") = _initial_temperature;
+      params.set<RealVectorValue>("initial_velocity") = _initial_velocity;
+      params.set<UserObjectName>("fluid_properties") = _fp_name;
+      _problem->addInitialCondition("NSInitialCondition", name + std::string("_ic"), params);
+    }
+
+    // Aux Variables
+    auxs.push_back(NS::velocity_x);
+    auxs.push_back(NS::pressure);
+    auxs.push_back(NS::temperature);
+    auxs.push_back(NS::enthalpy);
+    auxs.push_back(NS::mach_number);
+    auxs.push_back(NS::internal_energy);
+    auxs.push_back(NS::specific_volume);
+    {
+      InputParameters params = _factory.getValidParams("NSInitialCondition");
+      params.set<VariableName>("variable") = name;
+      params.set<Real>("initial_pressure") = _initial_pressure;
+      params.set<Real>("initial_temperature") = _initial_temperature;
+      params.set<RealVectorValue>("initial_velocity") = _initial_velocity;
+      params.set<UserObjectName>("fluid_properties") = _fp_name;
+      _problem->addInitialCondition("NSInitialCondition", name + std::string("_ic"), params);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void
+CNSAction::addNSMassWeakStagnationBC()
+{
+  const std::string kernel_type = "NSMassWeakStagnationBC";
+  InputParameters params = _factory.getValidParams(kernel_type);
+  params.set<NonlinearVariableName>("variable") = NS::density;
+  setBCCommonParams(params);
+
+  for (unsigned int i = 0; i < _stagnation_boundary.size(); ++i)
+  {
+    setStagnationBCCommonParams(params, i);
+    _problem->addBoundaryCondition(
+        kernel_type, "weak_stagnation_mass_inflow_" + Moose::stringify(i), params);
+  }
+}
+
+void
+CNSAction::addNSEnergyWeakStagnationBC()
+{
+  const std::string kernel_type = "NSEnergyWeakStagnationBC";
+  InputParameters params = _factory.getValidParams(kernel_type);
+  params.set<NonlinearVariableName>("variable") = NS::total_energy;
+  setBCCommonParams(params);
+  for (unsigned int i = 0; i < _stagnation_boundary.size(); ++i)
+  {
+    setStagnationBCCommonParams(params, i);
+    _problem->addBoundaryCondition(
+        kernel_type, "weak_stagnation_energy_inflow_" + Moose::stringify(i), params);
+  }
+}
+
+void
+CNSAction::addNSMomentumWeakStagnationBC(unsigned int component)
+{
+  const static std::string momentums[3] = {NS::momentum_x, NS::momentum_y, NS::momentum_z};
+
+  // Convective part
+  {
+    const std::string kernel_type = "NSMomentumConvectiveWeakStagnationBC";
+    InputParameters params = _factory.getValidParams(kernel_type);
+    params.set<NonlinearVariableName>("variable") = momentums[component];
+    setBCCommonParams(params);
+    // Momentum BCs also need the component.
+    params.set<unsigned int>("component") = component;
+    for (unsigned int i = 0; i < _stagnation_boundary.size(); ++i)
+    {
+      setStagnationBCCommonParams(params, i);
+      _problem->addBoundaryCondition(kernel_type,
+                                     std::string("weak_stagnation_") + momentums[component] +
+                                         std::string("_convective_inflow_") + Moose::stringify(i),
+                                     params);
+    }
+  }
+
+  // Pressure part
+  {
+    const std::string kernel_type = "NSMomentumPressureWeakStagnationBC";
+    InputParameters params = _factory.getValidParams(kernel_type);
+    params.set<NonlinearVariableName>("variable") = momentums[component];
+    setBCCommonParams(params);
+    // Momentum BCs also need the component.
+    params.set<unsigned int>("component") = component;
+
+    for (unsigned int i = 0; i < _stagnation_boundary.size(); ++i)
+    {
+      setStagnationBCCommonParams(params, i);
+
+      _problem->addBoundaryCondition(kernel_type,
+                                     std::string("weak_stagnation_") + momentums[component] +
+                                         std::string("_pressure_inflow_") + Moose::stringify(i),
+                                     params);
+    }
+  }
+}
+
+void
+CNSAction::addNoPenetrationBC(unsigned int component)
+{
+  const static std::string momentums[3] = {NS::momentum_x, NS::momentum_y, NS::momentum_z};
+  const std::string kernel_type = "NSPressureNeumannBC";
+  InputParameters params = _factory.getValidParams(kernel_type);
+  params.set<NonlinearVariableName>("variable") = momentums[component];
+  setBCCommonParams(params);
+
+  // These BCs also need the component and couping to the pressure.
+  params.set<unsigned int>("component") = component;
+  params.set<CoupledName>("pressure") = {NS::pressure};
+
+  params.set<std::vector<BoundaryName>>("boundary") = _no_penetration_boundary;
+  _problem->addBoundaryCondition(
+      kernel_type, momentums[component] + std::string("_no_penetration"), params);
+}
+
+void
+CNSAction::addNSMassUnspecifiedNormalFlowBC()
+{
+  const std::string kernel_type = "NSMassUnspecifiedNormalFlowBC";
+  InputParameters params = _factory.getValidParams(kernel_type);
+  params.set<NonlinearVariableName>("variable") = NS::density;
+  setBCCommonParams(params);
+  for (unsigned int i = 0; i < _static_pressure_boundary.size(); ++i)
+  {
+    params.set<std::vector<BoundaryName>>("boundary") = {_static_pressure_boundary[i]};
+    params.set<Real>("specified_pressure") = _static_pressure[i];
+    _problem->addBoundaryCondition(kernel_type, "mass_outflow_" + Moose::stringify(i), params);
+  }
+}
+
+void
+CNSAction::addNSMomentumInviscidSpecifiedPressureBC(unsigned int component)
+{
+  const static std::string momentums[3] = {NS::momentum_x, NS::momentum_y, NS::momentum_z};
+  const std::string kernel_type = "NSMomentumInviscidSpecifiedPressureBC";
+  InputParameters params = _factory.getValidParams(kernel_type);
+  params.set<NonlinearVariableName>("variable") = momentums[component];
+  setBCCommonParams(params);
+
+  // These BCs also need the component.
+  params.set<unsigned int>("component") = component;
+
+  for (unsigned int i = 0; i < _static_pressure_boundary.size(); ++i)
+  {
+    params.set<std::vector<BoundaryName>>("boundary") = {_static_pressure_boundary[i]};
+    params.set<Real>("specified_pressure") = _static_pressure[i];
+    _problem->addBoundaryCondition(
+        kernel_type,
+        momentums[component] + std::string("_specified_pressure_outflow_") + Moose::stringify(i),
+        params);
+  }
+}
+
+void
+CNSAction::addNSEnergyInviscidSpecifiedPressureBC()
+{
+  const std::string kernel_type = "NSEnergyInviscidSpecifiedPressureBC";
+  InputParameters params = _factory.getValidParams(kernel_type);
+  params.set<NonlinearVariableName>("variable") = NS::total_energy;
+  setBCCommonParams(params);
+  // This BC also requires the current value of the temperature.
+  params.set<CoupledName>(NS::temperature) = {NS::temperature};
+  for (unsigned int i = 0; i < _static_pressure_boundary.size(); ++i)
+  {
+    params.set<std::vector<BoundaryName>>("boundary") = {_static_pressure_boundary[i]};
+    params.set<Real>("specified_pressure") = _static_pressure[i];
+    _problem->addBoundaryCondition(
+        kernel_type, "rhoE_specified_pressure_outflow_" + Moose::stringify(i), params);
+  }
+}
+
+void
+CNSAction::setBCCommonParams(InputParameters & params)
+{
+  // coupled variables
+  params.set<CoupledName>(NS::density) = {NS::density};
+  params.set<CoupledName>(NS::total_energy) = {NS::total_energy};
+
+  // Couple the appropriate number of velocities
+  coupleVelocities(params);
+  coupleMomentums(params);
+
+  // FluidProperties object
+  params.set<UserObjectName>("fluid_properties") = _fp_name;
+}
+
+void
+CNSAction::setStagnationBCCommonParams(InputParameters & params, unsigned int i)
+{
+  params.set<std::vector<BoundaryName>>("boundary") = {_stagnation_boundary[i]};
+  params.set<Real>("stagnation_pressure") = _stagnation_pressure[i];
+  params.set<Real>("stagnation_temperature") = _stagnation_temperature[i];
+  params.set<Real>("sx") = _stagnation_direction[_dim * i];
+  if (_dim == 1)
+    params.set<Real>("sy") = 0;
+  if (_dim >= 2)
+    params.set<Real>("sy") = _stagnation_direction[_dim * i + 1];
+  if (_dim >= 3)
+    params.set<Real>("sz") = _stagnation_direction[_dim * i + 2];
+}

@@ -40,7 +40,29 @@
 	- segfault
 
 Compressible flow
+* cns-notes: Tries to break down CNS Action
 * cg-cns: tries to implement CNS Action
 * cg-cns2: tries to implement CNS Action using kernels
-
 * fv-euler1: tries to implement euler equations
+
+SQUIRREL:
+---------
+euler2, euler3:
+* fv_euler2.i, fv_euler3.i
+* These all can be deleted eventually
+* ADCoupledVelocityMaterial: copied from MooseTestApp
+* FVEnergy: d/dx (ue + up)
+* FVEnergyOutflowBC: d/dx (ue + up)
+* ADMomentumMaterial:
+	- calcualtes vel, rho*u, p = 0.01 (\gamma-1) (e - rho u^2/2)
+
+euler4, ..., euler9:
+* FVMomentum: d/dx \rho u^2 + coef * p
+* FVMomentumOutflowBC: d/dx \rho u^2 + coef * p
+* FVPressDrop: coef * \rho u^2
+
+* MatFVTemperature: d/dx (cp * rho * T  * u)
+* MatFVTemperatureOutflowBC: d/dx (cp * rho * T  * u)
+
+* ADEulerMaterial:
+	- calculates: vel, rho*u, rho*T, p=\rho R T
