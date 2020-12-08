@@ -23,7 +23,7 @@ def add_legends_full_assembly():
     fname = get_sample_data('{0}/{1}.png'.format(cwd, figure))
     im = plt.imread(fname)
     plt.imshow(im)
-    plt.legend(handles=[red, gray, blue],
+    plt.legend(handles=[red, gray, blue], fontsize=14,
                loc="upper left", bbox_to_anchor=(1.0, 1.0), fancybox=True)
 
     plt.axis('off')

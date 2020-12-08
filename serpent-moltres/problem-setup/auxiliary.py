@@ -170,7 +170,7 @@ def plot_serpent_axial(data, name, save, V=1, dire='Z'):
     # val /= M
     G = len(val)  # number of energy groups
 
-    plt.figure()
+    fig, ax = plt.subplots()
     for i in range(G):
         plt.step(z, val[G-1-i], where='post', label='g={0}'.format(i+1))
 
@@ -184,6 +184,7 @@ def plot_serpent_axial(data, name, save, V=1, dire='Z'):
     plt.yticks(fontsize=14)
     plt.xlabel(dire.lower()+' [cm]', fontsize=14)
     plt.ylabel(r'$\phi \left[\frac{n}{cm^2s}\right]$', fontsize=14)
+    ax.yaxis.get_offset_text().set_fontsize(14)
     plt.savefig(save + '-' + name, dpi=300, bbox_inches="tight")
     plt.close()
 
@@ -207,7 +208,7 @@ def plotcsv_frommoose_groups(file, save, G=2, dire='z'):
     '''
 
     file = pd.read_csv(file)
-    plt.figure()
+    fig, ax = plt.subplots()
 
     if dire == 'r':
         x1 = np.array(file['x'].tolist())
@@ -247,14 +248,15 @@ def plotcsv_frommoose_groups(file, save, G=2, dire='z'):
     plt.yticks(fontsize=14)
     plt.xlabel(dire+' [cm]', fontsize=14)
     plt.ylabel(r'$\phi \left[\frac{n}{cm^2s}\right]$', fontsize=14)
+    ax.yaxis.get_offset_text().set_fontsize(14)
     plt.savefig(save, dpi=300, bbox_inches="tight")
     plt.close()
 
 
-def main():
-    # Serpent results
+if __name__ == "__main__":
+    # Serpent figures
     # Add legend to geometry figure
-    # standard()
+    standard()
 
     # Plot flux
     data = st.read('standard-column_det0.m', reader='det')
@@ -265,15 +267,11 @@ def main():
     # plot_serpent_axial(data, 'Axial', save, V)
     plot_serpent_axial_werrbars(data, 'Axial', save, V)
 
-    # Moltres results
+    # Moltres figures
     # Add legend to geometry figure
-    # moltres_assembly_legend()
+    moltres_assembly_legend()
 
     # Plot flux
     file = '3D-assembly-homo-eig_fuel_0002.csv'
     save = 'standard-column-homo'
     plotcsv_frommoose_groups(file, save, G=2, dire='z')
-
-
-if __name__ == "__main__":
-    main()
