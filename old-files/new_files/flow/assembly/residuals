@@ -1,0 +1,164 @@
+nx = 200
+ny = 20
+value = '-(y^2-y)*6*1'
+
+ 0 Nonlinear |R| = 4.898964e+00
+    |residual|_2 of individual variables:
+                      vel_x: 4.89896
+                      vel_y: 0
+                      p:     0
+      0 Linear |R| = 4.898964e+00
+      1 Linear |R| = 7.887047e-16
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 4.898964176232e+00 gnorm 2.672185206648e-06
+ 1 Nonlinear |R| = 2.672185e-06
+    |residual|_2 of individual variables:
+                      vel_x: 1.69057e-09
+                      vel_y: 7.19407e-10
+                      p:     2.67218e-06
+      0 Linear |R| = 2.672185e-06
+      1 Linear |R| = 6.349687e-21
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 2.672185206648e-06 gnorm 3.281163805743e-11
+ 2 Nonlinear |R| = 3.281164e-11
+    |residual|_2 of individual variables:
+                      vel_x: 1.7731e-13
+                      vel_y: 5.03432e-14
+                      p:     3.28111e-11
+Nonlinear solve converged due to CONVERGED_FNORM_RELATIVE iterations 2
+ Solve Converged!
+
+Outlier Variable Residual Norms:
+  p: 3.281112e-11
+
+
+nx = 200
+ny = 20
+value = '-(y^2-y)*6*10'
+
+ 0 Nonlinear |R| = 4.898964e+01
+    |residual|_2 of individual variables:
+                      vel_x: 48.9896
+                      vel_y: 0
+                      p:     0
+      0 Linear |R| = 4.898964e+01
+      1 Linear |R| = 4.083792e-15
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 4.898964176232e+01 gnorm 1.490843572696e-04
+ 1 Nonlinear |R| = 1.490844e-04
+    |residual|_2 of individual variables:
+                      vel_x: 7.86526e-07
+                      vel_y: 9.3183e-08
+                      p:     0.000149082
+      0 Linear |R| = 1.490844e-04
+      1 Linear |R| = 4.299704e-19
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 1.490843572696e-04 gnorm 1.570289263007e-07
+ 2 Nonlinear |R| = 1.570289e-07
+    |residual|_2 of individual variables:
+                      vel_x: 9.97618e-10
+                      vel_y: 9.79269e-11
+                      p:     1.57026e-07
+      0 Linear |R| = 1.570289e-07
+      1 Linear |R| = 5.192296e-22
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 1.570289263007e-07 gnorm 2.500833547316e-13
+ 3 Nonlinear |R| = 2.500834e-13
+    |residual|_2 of individual variables:
+                      vel_x: 9.54438e-16
+                      vel_y: 1.68521e-16
+                      p:     2.50081e-13
+Nonlinear solve converged due to CONVERGED_FNORM_RELATIVE iterations 3
+ Solve Converged!
+
+Outlier Variable Residual Norms:
+  p: 2.500815e-13
+
+
+nx = 200
+ny = 20
+value = '-(y^2-y)*6*100'
+
+ 0 Nonlinear |R| = 4.898964e+02
+    |residual|_2 of individual variables:
+                      vel_x: 489.896
+                      vel_y: 0
+                      p:     0
+      0 Linear |R| = 4.898964e+02
+      1 Linear |R| = 9.373309e-14
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 4.898964176232e+02 gnorm 2.079865487018e-03
+ 1 Nonlinear |R| = 2.079865e-03
+    |residual|_2 of individual variables:
+                      vel_x: 0.000102776
+                      vel_y: 1.03134e-05
+                      p:     0.0020773
+      0 Linear |R| = 2.079865e-03
+      1 Linear |R| = 6.209648e-18
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 2.079865487018e-03 gnorm 2.174557819838e-06
+ 2 Nonlinear |R| = 2.174558e-06
+    |residual|_2 of individual variables:
+                      vel_x: 2.48096e-07
+                      vel_y: 3.32319e-08
+                      p:     2.1601e-06
+      0 Linear |R| = 2.174558e-06
+      1 Linear |R| = 1.203432e-20
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 2.174557819838e-06 gnorm 1.888672310843e-10
+ 3 Nonlinear |R| = 1.888672e-10
+    |residual|_2 of individual variables:
+                      vel_x: 5.79112e-12
+                      vel_y: 9.76394e-13
+                      p:     1.88776e-10
+Nonlinear solve converged due to CONVERGED_FNORM_RELATIVE iterations 3
+ Solve Converged!
+
+Outlier Variable Residual Norms:
+  p: 1.887759e-10
+
+
+nx = 400
+ny = 20
+value = '-(y^2-y)*6*100'
+
+ 0 Nonlinear |R| = 4.898964e+02
+    |residual|_2 of individual variables:
+                      vel_x: 489.896
+                      vel_y: 0
+                      p:     0
+      0 Linear |R| = 4.898964e+02
+      1 Linear |R| = 1.862631e-13
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 4.898964176232e+02 gnorm 1.378776837880e-03
+ 1 Nonlinear |R| = 1.378777e-03
+    |residual|_2 of individual variables:
+                      vel_x: 6.53247e-05
+                      vel_y: 5.12407e-06
+                      p:     0.00137722
+      0 Linear |R| = 1.378777e-03
+      1 Linear |R| = 7.544409e-18
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 1.378776837880e-03 gnorm 1.460401731048e-06
+ 2 Nonlinear |R| = 1.460402e-06
+    |residual|_2 of individual variables:
+                      vel_x: 9.00853e-08
+                      vel_y: 9.65758e-09
+                      p:     1.45759e-06
+      0 Linear |R| = 1.460402e-06
+      1 Linear |R| = 4.285905e-21
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 1.460401731048e-06 gnorm 2.955986192197e-11
+ 3 Nonlinear |R| = 2.955986e-11
+    |residual|_2 of individual variables:
+                      vel_x: 6.45288e-13
+                      vel_y: 8.70488e-14
+                      p:     2.95527e-11
+Nonlinear solve converged due to CONVERGED_FNORM_RELATIVE iterations 3
+ Solve Converged!
+
+Outlier Variable Residual Norms:
+  p: 2.955269e-11
+
+The increases in the velocity increases the residuals.
+Increasing the number of elements reduces the residuals.
