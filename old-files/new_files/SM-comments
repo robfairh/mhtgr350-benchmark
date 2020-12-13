@@ -1,0 +1,9 @@
+SM comments:
+
+If you update your MOOSE to the latest version, you gotta use the FileMeshGenerator object for your mesh.
+Two of your files don't have a newline at the end of file which could fail PEP8 or C style tests if they're python/C files.
+Just fyi since I noticed it happens when I edit files using certain editors on Windows
+
+@robfairh I also noticed that PJFNK doesn't work well with Moltres runs and asm is really slow.
+I've had some success with hypre and boomeramg on my desktop but not on BW.
+Also, you should try -pc_factor_mat_solver_package with superlu_dist or mumps on BW when you're using a lot of nodes.
