@@ -1,0 +1,136 @@
+zmax=10, nz=200
+petsc_options_iname = '-pc_type -sub_ksp_type -snes_linesearch_minlambda'
+petsc_options_value = 'lu       preonly       1e-3'
+
+----------------------------------------
+Begin Torque Prologue on nid25254
+at Wed Oct 14 17:08:08 CDT 2020
+Job Id:			11626813.bw
+Username:		froberto
+Group:			ILL_bbcc
+Job name:		masters-loop
+Requested resources:	nodes=1:ppn=1:xe,walltime=00:30:00,neednodes=1:ppn=1:xe
+Queue:			debug
+Account:		bbcc
+End Torque Prologue:  0.120 elapsed
+----------------------------------------
+
+/var/spool/torque/mom_priv/jobs/11626813.bw.SC: line 56: /projects/sciteam/bbcc/source_me_for_MOOSE: Permission denied
+
+Initializing equation system .                                                             [[33m  2.64 s[39m]
+
+Framework Information:
+MOOSE Version:           git commit f052e463d8 on 2019-11-13
+LibMesh Version:         143b57032761c71a1df09c59ffc692bb4f198a0c
+PETSc Version:           3.9.3
+Current Time:            Wed Oct 14 17:08:26 2020
+Executable Timestamp:    Wed Oct 14 17:08:11 2020
+
+Parallelism:
+  Num Processors:          1
+  Num Threads:             1
+
+Mesh: 
+  Parallel Type:           replicated
+  Mesh Dimension:          3
+  Spatial Dimension:       3
+  Nodes:                   
+    Total:                 176841
+    Local:                 176841
+  Elems:                   
+    Total:                 20000
+    Local:                 20000
+  Num Subdomains:          1
+  Num Partitions:          1
+
+Nonlinear System:
+  Num DOFs:                97284
+  Num Local DOFs:          97284
+  Variables:               { "vel_x" "vel_y" "vel_z" "p" } 
+  Finite Element Types:    "LAGRANGE" 
+  Approximation Orders:    "FIRST" 
+
+Relationship Managers:
+  Default:                 libMesh::DefaultCoupling x 2
+
+Execution Information:
+  Executioner:             Steady
+  Solver Mode:             NEWTON
+  MOOSE Preconditioner:    SMP
+
+Computing initial stateful property values                                                 [[33m  1.03 s[39m]
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | flow_in        | flow_out       | memory         |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
++----------------+----------------+----------------+----------------+
+
+Computing initial residual ..                                                              [[33m  3.60 s[39m]
+ 0 Nonlinear |R| = [32m1.199880e+01[39m
+    |residual|_2 of individual variables:
+                      vel_x: 0
+                      vel_y: 0
+                      vel_z: 11.9988
+                      p:     0
+      0 Linear |R| = [32m1.199880e+01[39m
+      1 Linear |R| = [32m1.149632e-13[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 1.199880000000e+01 gnorm 5.232359474591e-03
+ 1 Nonlinear |R| = [32m5.232359e-03[39m
+    |residual|_2 of individual variables:
+                      vel_x: 0.00165258
+                      vel_y: 0.00165258
+                      vel_z: 0.00466949
+                      p:     0.000333774
+      0 Linear |R| = [32m5.232359e-03[39m
+      1 Linear |R| = [32m2.883898e-17[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 5.232359474591e-03 gnorm 2.994400271391e-07
+ 2 Nonlinear |R| = [32m2.994400e-07[39m
+    |residual|_2 of individual variables:
+                      vel_x: 1.02499e-07
+                      vel_y: 1.02499e-07
+                      vel_z: 2.61919e-07
+                      p:     7.10694e-09
+      0 Linear |R| = [32m2.994400e-07[39m
+      1 Linear |R| = [32m1.448433e-21[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 2.994400271391e-07 gnorm 3.623607921162e-14
+ 3 Nonlinear |R| = [32m3.623608e-14[39m
+    |residual|_2 of individual variables:
+                      vel_x: 1.04551e-14
+                      vel_y: 1.24017e-14
+                      vel_z: 3.23965e-14
+                      p:     6.39759e-16
+Nonlinear solve converged due to CONVERGED_FNORM_RELATIVE iterations 3
+[32m Solve Converged![39m
+
+Outlier Variable Residual Norms:
+  vel_z: [33m3.239649e-14[39m
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | flow_in        | flow_out       | memory         |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |  -9.801000e-01 |   9.801000e-01 |   1.542000e+03 |
++----------------+----------------+----------------+----------------+
+
+
+FINAL:
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | flow_in        | flow_out       | memory         |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |  -9.801000e-01 |   9.801000e-01 |   1.542000e+03 |
+|   2.000000e+00 |  -9.801000e-01 |   9.801000e-01 |   1.542000e+03 |
++----------------+----------------+----------------+----------------+
+
+Outputing exodus   [[33m  1.71 s[39m]
+Application 93559292 network throttled: 1 node throttled, 00:02:23 node-seconds
+Application 93559292 balanced injection 100, after throttle 63
+Application 93559292 resources: utime ~840s, stime ~5s, Rss ~1579576, inblocks ~63519, outblocks ~233907

@@ -1,0 +1,115 @@
+zmax=10, nz=200
+petsc_options_iname = '-pc_type -sub_pc_type -sub_pc_factor_shift_type'
+petsc_options_value = 'asm      lu           NONZERO'
+
+$MOLTRES/moltres-opt -i ns01-3.i
+
+Framework Information:
+MOOSE Version:           git commit f052e46 on 2019-11-13
+LibMesh Version:         143b57032761c71a1df09c59ffc692bb4f198a0c
+PETSc Version:           3.8.3
+Current Time:            Wed Oct 14 17:19:09 2020
+Executable Timestamp:    Thu Jun 11 09:18:52 2020
+
+Parallelism:
+  Num Processors:          1
+  Num Threads:             1
+
+Mesh: 
+  Parallel Type:           replicated
+  Mesh Dimension:          3
+  Spatial Dimension:       3
+  Nodes:                   
+    Total:                 176841
+    Local:                 176841
+  Elems:                   
+    Total:                 20000
+    Local:                 20000
+  Num Subdomains:          1
+  Num Partitions:          1
+
+Nonlinear System:
+  Num DOFs:                97284
+  Num Local DOFs:          97284
+  Variables:               { "vel_x" "vel_y" "vel_z" "p" } 
+  Finite Element Types:    "LAGRANGE" 
+  Approximation Orders:    "FIRST" 
+
+Relationship Managers:
+  Default:                 libMesh::DefaultCoupling x 2
+
+Execution Information:
+  Executioner:             Steady
+  Solver Mode:             NEWTON
+  MOOSE Preconditioner:    SMP
+
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | flow_in        | flow_out       | memory         |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
++----------------+----------------+----------------+----------------+
+
+Computing initial residual                                                                 [  1.78 s]
+ 0 Nonlinear |R| = 1.199880e+01
+    |residual|_2 of individual variables:
+                      vel_x: 0
+                      vel_y: 0
+                      vel_z: 11.9988
+                      p:     0
+      0 Linear |R| = 1.199880e+01
+      1 Linear |R| = 1.153331e-13
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 1.199880000000e+01 gnorm 5.232359474592e-03
+ 1 Nonlinear |R| = 5.232359e-03
+    |residual|_2 of individual variables:
+                      vel_x: 0.00165258
+                      vel_y: 0.00165258
+                      vel_z: 0.00466949
+                      p:     0.000333774
+      0 Linear |R| = 5.232359e-03
+      1 Linear |R| = 2.845165e-17
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 5.232359474592e-03 gnorm 2.994400279257e-07
+ 2 Nonlinear |R| = 2.994400e-07
+    |residual|_2 of individual variables:
+                      vel_x: 1.02499e-07
+                      vel_y: 1.02499e-07
+                      vel_z: 2.61919e-07
+                      p:     7.10694e-09
+      0 Linear |R| = 2.994400e-07
+      1 Linear |R| = 9.643996e-22
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 2.994400279257e-07 gnorm 3.718506859963e-14
+ 3 Nonlinear |R| = 3.718507e-14
+    |residual|_2 of individual variables:
+                      vel_x: 1.13762e-14
+                      vel_y: 1.28636e-14
+                      vel_z: 3.29755e-14
+                      p:     6.7496e-16
+Nonlinear solve converged due to CONVERGED_FNORM_RELATIVE iterations 3
+ Solve Converged!
+
+Outlier Variable Residual Norms:
+  vel_z: 3.297550e-14
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | flow_in        | flow_out       | memory         |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |  -9.801000e-01 |   9.801000e-01 |   1.696000e+03 |
++----------------+----------------+----------------+----------------+
+
+
+FINAL:
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | flow_in        | flow_out       | memory         |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |  -9.801000e-01 |   9.801000e-01 |   1.696000e+03 |
+|   2.000000e+00 |  -9.801000e-01 |   9.801000e-01 |   1.696000e+03 |
++----------------+----------------+----------------+----------------+

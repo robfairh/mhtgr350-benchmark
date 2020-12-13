@@ -1,0 +1,406 @@
+
+petsc_options_iname = '-pc_type -pc_asm_overlap -sub_pc_type -sub_pc_factor_levels'
+petsc_options_value = 'asm      2               ilu          6'
+
+----------------------------------------
+Begin Torque Prologue on nid25328
+at Wed Oct 14 21:47:38 CDT 2020
+Job Id:			11627619.bw
+Username:		froberto
+Group:			ILL_bbcc
+Job name:		masters-loop
+Requested resources:	nodes=1:ppn=32:xe,walltime=00:30:00,neednodes=1:ppn=32:xe
+Queue:			normal
+Account:		bbcc
+End Torque Prologue:  0.102 elapsed
+----------------------------------------
+
+
+
+
+/var/spool/torque/mom_priv/jobs/11627619.bw.SC: line 56: /projects/sciteam/bbcc/source_me_for_MOOSE: Permission denied
+
+Building mesh                                                                              [[33m  1.22 s[39m]
+Initializing equation system                                                               [[33m  1.23 s[39m]
+
+Framework Information:
+MOOSE Version:           git commit f052e463d8 on 2019-11-13
+LibMesh Version:         143b57032761c71a1df09c59ffc692bb4f198a0c
+PETSc Version:           3.9.3
+Current Time:            Wed Oct 14 21:55:34 2020
+Executable Timestamp:    Wed Oct 14 21:47:47 2020
+
+Parallelism:
+  Num Processors:          32
+  Num Threads:             1
+
+Mesh: 
+  Parallel Type:           replicated
+  Mesh Dimension:          3
+  Spatial Dimension:       3
+  Nodes:                   
+    Total:                 176841
+    Local:                 6191
+  Elems:                   
+    Total:                 20000
+    Local:                 634
+  Num Subdomains:          1
+  Num Partitions:          32
+  Partitioner:             metis
+
+Nonlinear System:
+  Num DOFs:                97284
+  Num Local DOFs:          3720
+  Variables:               { "vel_x" "vel_y" "vel_z" "p" } 
+  Finite Element Types:    "LAGRANGE" 
+  Approximation Orders:    "FIRST" 
+
+Relationship Managers:
+  Default:                 libMesh::DefaultCoupling x 2
+
+Execution Information:
+  Executioner:             Steady
+  Solver Mode:             NEWTON
+  MOOSE Preconditioner:    SMP
+
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | flow_in        | flow_out       | memory         |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
++----------------+----------------+----------------+----------------+
+
+ 0 Nonlinear |R| = [32m1.199880e+01[39m
+    |residual|_2 of individual variables:
+                      vel_x: 0
+                      vel_y: 0
+                      vel_z: 11.9988
+                      p:     0
+      0 Linear |R| = [32m1.199880e+01[39m
+      1 Linear |R| = [32m1.867256e+00[39m
+      2 Linear |R| = [32m1.406486e+00[39m
+      3 Linear |R| = [32m1.145395e+00[39m
+      4 Linear |R| = [32m9.655123e-01[39m
+      5 Linear |R| = [32m9.019222e-01[39m
+      6 Linear |R| = [32m8.284282e-01[39m
+      7 Linear |R| = [32m6.782020e-01[39m
+      8 Linear |R| = [32m6.371177e-01[39m
+      9 Linear |R| = [32m5.910724e-01[39m
+     10 Linear |R| = [33m5.643678e-01[39m
+     11 Linear |R| = [32m5.298231e-01[39m
+     12 Linear |R| = [33m5.149405e-01[39m
+     13 Linear |R| = [33m4.902756e-01[39m
+     14 Linear |R| = [33m4.788167e-01[39m
+     15 Linear |R| = [32m4.413330e-01[39m
+     16 Linear |R| = [33m4.232784e-01[39m
+     17 Linear |R| = [33m4.150730e-01[39m
+     18 Linear |R| = [33m4.000547e-01[39m
+     19 Linear |R| = [33m3.904479e-01[39m
+     20 Linear |R| = [33m3.727732e-01[39m
+     21 Linear |R| = [32m3.294109e-01[39m
+     22 Linear |R| = [32m2.659396e-01[39m
+     23 Linear |R| = [32m2.174998e-01[39m
+     24 Linear |R| = [32m1.775541e-01[39m
+     25 Linear |R| = [32m1.338091e-01[39m
+     26 Linear |R| = [32m1.030648e-01[39m
+     27 Linear |R| = [32m8.118515e-02[39m
+     28 Linear |R| = [32m5.522750e-02[39m
+     29 Linear |R| = [32m4.100391e-02[39m
+     30 Linear |R| = [32m2.983599e-02[39m
+     31 Linear |R| = [32m2.430314e-02[39m
+     32 Linear |R| = [32m2.085872e-02[39m
+     33 Linear |R| = [32m1.732405e-02[39m
+     34 Linear |R| = [32m1.427702e-02[39m
+     35 Linear |R| = [32m1.099097e-02[39m
+     36 Linear |R| = [32m8.511219e-03[39m
+     37 Linear |R| = [32m6.347335e-03[39m
+     38 Linear |R| = [32m5.121667e-03[39m
+     39 Linear |R| = [32m4.322773e-03[39m
+     40 Linear |R| = [32m3.926444e-03[39m
+     41 Linear |R| = [33m3.737388e-03[39m
+     42 Linear |R| = [33m3.566995e-03[39m
+     43 Linear |R| = [33m3.394078e-03[39m
+     44 Linear |R| = [33m3.281579e-03[39m
+     45 Linear |R| = [32m2.953262e-03[39m
+     46 Linear |R| = [33m2.869048e-03[39m
+     47 Linear |R| = [33m2.736953e-03[39m
+     48 Linear |R| = [33m2.636600e-03[39m
+     49 Linear |R| = [32m2.504716e-03[39m
+     50 Linear |R| = [33m2.421867e-03[39m
+     51 Linear |R| = [33m2.356241e-03[39m
+     52 Linear |R| = [33m2.300827e-03[39m
+     53 Linear |R| = [32m2.169047e-03[39m
+     54 Linear |R| = [33m2.081025e-03[39m
+     55 Linear |R| = [33m2.011259e-03[39m
+     56 Linear |R| = [32m1.861633e-03[39m
+     57 Linear |R| = [32m1.607941e-03[39m
+     58 Linear |R| = [32m1.259823e-03[39m
+     59 Linear |R| = [32m8.725289e-04[39m
+     60 Linear |R| = [32m5.420381e-04[39m
+     61 Linear |R| = [32m4.040352e-04[39m
+     62 Linear |R| = [32m3.304201e-04[39m
+     63 Linear |R| = [32m2.840392e-04[39m
+     64 Linear |R| = [32m2.487245e-04[39m
+     65 Linear |R| = [32m2.276565e-04[39m
+     66 Linear |R| = [32m2.124073e-04[39m
+     67 Linear |R| = [33m2.091897e-04[39m
+     68 Linear |R| = [33m2.038480e-04[39m
+     69 Linear |R| = [33m2.011653e-04[39m
+     70 Linear |R| = [33m1.960820e-04[39m
+     71 Linear |R| = [32m1.843339e-04[39m
+     72 Linear |R| = [32m1.691346e-04[39m
+     73 Linear |R| = [32m1.599437e-04[39m
+     74 Linear |R| = [33m1.542486e-04[39m
+     75 Linear |R| = [33m1.500073e-04[39m
+     76 Linear |R| = [33m1.484267e-04[39m
+     77 Linear |R| = [33m1.435029e-04[39m
+     78 Linear |R| = [33m1.398642e-04[39m
+     79 Linear |R| = [32m1.290229e-04[39m
+     80 Linear |R| = [32m1.186500e-04[39m
+     81 Linear |R| = [32m1.061854e-04[39m
+     82 Linear |R| = [32m9.602266e-05[39m
+     83 Linear |R| = [32m8.284024e-05[39m
+     84 Linear |R| = [32m7.231425e-05[39m
+     85 Linear |R| = [32m5.766420e-05[39m
+     86 Linear |R| = [32m4.138617e-05[39m
+     87 Linear |R| = [32m2.947187e-05[39m
+     88 Linear |R| = [32m2.072123e-05[39m
+     89 Linear |R| = [32m1.405165e-05[39m
+     90 Linear |R| = [32m9.184949e-06[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 90
+      Line search: Using full step: fnorm 1.199880000000e+01 gnorm 5.232320191118e-03
+ 1 Nonlinear |R| = [32m5.232320e-03[39m
+    |residual|_2 of individual variables:
+                      vel_x: 0.00165258
+                      vel_y: 0.00165259
+                      vel_z: 0.00466944
+                      p:     0.000333775
+      0 Linear |R| = [32m5.232320e-03[39m
+      1 Linear |R| = [32m2.274872e-03[39m
+      2 Linear |R| = [32m1.240294e-03[39m
+      3 Linear |R| = [32m7.838060e-04[39m
+      4 Linear |R| = [32m5.927868e-04[39m
+      5 Linear |R| = [32m4.745717e-04[39m
+      6 Linear |R| = [32m3.436525e-04[39m
+      7 Linear |R| = [32m2.836400e-04[39m
+      8 Linear |R| = [32m2.392779e-04[39m
+      9 Linear |R| = [32m2.086587e-04[39m
+     10 Linear |R| = [32m1.869615e-04[39m
+     11 Linear |R| = [32m1.728140e-04[39m
+     12 Linear |R| = [32m1.569503e-04[39m
+     13 Linear |R| = [32m1.408331e-04[39m
+     14 Linear |R| = [32m1.139952e-04[39m
+     15 Linear |R| = [32m9.928106e-05[39m
+     16 Linear |R| = [32m9.087483e-05[39m
+     17 Linear |R| = [32m8.357492e-05[39m
+     18 Linear |R| = [32m7.691075e-05[39m
+     19 Linear |R| = [32m7.155083e-05[39m
+     20 Linear |R| = [32m6.557024e-05[39m
+     21 Linear |R| = [33m6.239678e-05[39m
+     22 Linear |R| = [33m6.002849e-05[39m
+     23 Linear |R| = [33m5.907403e-05[39m
+     24 Linear |R| = [33m5.857238e-05[39m
+     25 Linear |R| = [33m5.724368e-05[39m
+     26 Linear |R| = [33m5.457336e-05[39m
+     27 Linear |R| = [32m4.933452e-05[39m
+     28 Linear |R| = [32m4.055966e-05[39m
+     29 Linear |R| = [32m3.380175e-05[39m
+     30 Linear |R| = [32m2.918150e-05[39m
+     31 Linear |R| = [32m2.578917e-05[39m
+     32 Linear |R| = [32m2.355796e-05[39m
+     33 Linear |R| = [32m2.145029e-05[39m
+     34 Linear |R| = [32m1.938986e-05[39m
+     35 Linear |R| = [32m1.817572e-05[39m
+     36 Linear |R| = [32m1.536609e-05[39m
+     37 Linear |R| = [32m1.444073e-05[39m
+     38 Linear |R| = [33m1.410384e-05[39m
+     39 Linear |R| = [33m1.389864e-05[39m
+     40 Linear |R| = [33m1.351137e-05[39m
+     41 Linear |R| = [33m1.318174e-05[39m
+     42 Linear |R| = [33m1.295057e-05[39m
+     43 Linear |R| = [33m1.258169e-05[39m
+     44 Linear |R| = [33m1.216604e-05[39m
+     45 Linear |R| = [32m1.121109e-05[39m
+     46 Linear |R| = [32m1.034003e-05[39m
+     47 Linear |R| = [32m8.831094e-06[39m
+     48 Linear |R| = [32m8.061113e-06[39m
+     49 Linear |R| = [32m7.223729e-06[39m
+     50 Linear |R| = [32m6.850180e-06[39m
+     51 Linear |R| = [32m6.130358e-06[39m
+     52 Linear |R| = [32m4.844726e-06[39m
+     53 Linear |R| = [32m3.646362e-06[39m
+     54 Linear |R| = [32m2.682529e-06[39m
+     55 Linear |R| = [32m1.855884e-06[39m
+     56 Linear |R| = [32m1.229538e-06[39m
+     57 Linear |R| = [32m8.200988e-07[39m
+     58 Linear |R| = [32m5.681701e-07[39m
+     59 Linear |R| = [32m4.168849e-07[39m
+     60 Linear |R| = [32m2.921067e-07[39m
+     61 Linear |R| = [32m2.250440e-07[39m
+     62 Linear |R| = [32m1.790849e-07[39m
+     63 Linear |R| = [32m1.475567e-07[39m
+     64 Linear |R| = [32m1.228905e-07[39m
+     65 Linear |R| = [32m1.029725e-07[39m
+     66 Linear |R| = [32m8.903128e-08[39m
+     67 Linear |R| = [32m8.226011e-08[39m
+     68 Linear |R| = [32m7.492794e-08[39m
+     69 Linear |R| = [32m6.842655e-08[39m
+     70 Linear |R| = [32m6.191929e-08[39m
+     71 Linear |R| = [32m5.525407e-08[39m
+     72 Linear |R| = [32m4.975210e-08[39m
+     73 Linear |R| = [32m4.480531e-08[39m
+     74 Linear |R| = [32m4.140809e-08[39m
+     75 Linear |R| = [32m3.911912e-08[39m
+     76 Linear |R| = [33m3.729324e-08[39m
+     77 Linear |R| = [32m3.462558e-08[39m
+     78 Linear |R| = [33m3.369164e-08[39m
+     79 Linear |R| = [33m3.289547e-08[39m
+     80 Linear |R| = [33m3.187241e-08[39m
+     81 Linear |R| = [33m3.113582e-08[39m
+     82 Linear |R| = [33m3.058629e-08[39m
+     83 Linear |R| = [33m2.966364e-08[39m
+     84 Linear |R| = [32m2.675354e-08[39m
+     85 Linear |R| = [32m2.298451e-08[39m
+     86 Linear |R| = [32m1.808813e-08[39m
+     87 Linear |R| = [32m1.397505e-08[39m
+     88 Linear |R| = [32m1.067409e-08[39m
+     89 Linear |R| = [32m8.745811e-09[39m
+     90 Linear |R| = [32m6.565137e-09[39m
+     91 Linear |R| = [32m5.271040e-09[39m
+     92 Linear |R| = [32m4.466688e-09[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 92
+      Line search: Using full step: fnorm 5.232320191118e-03 gnorm 2.995030322143e-07
+ 2 Nonlinear |R| = [32m2.995030e-07[39m
+    |residual|_2 of individual variables:
+                      vel_x: 1.02412e-07
+                      vel_y: 1.02497e-07
+                      vel_z: 2.62026e-07
+                      p:     7.1083e-09
+      0 Linear |R| = [32m2.995030e-07[39m
+      1 Linear |R| = [32m1.111881e-07[39m
+      2 Linear |R| = [32m6.036277e-08[39m
+      3 Linear |R| = [32m3.667548e-08[39m
+      4 Linear |R| = [32m2.626488e-08[39m
+      5 Linear |R| = [32m2.009411e-08[39m
+      6 Linear |R| = [32m1.297910e-08[39m
+      7 Linear |R| = [32m1.092256e-08[39m
+      8 Linear |R| = [32m8.948030e-09[39m
+      9 Linear |R| = [32m7.540197e-09[39m
+     10 Linear |R| = [32m6.277394e-09[39m
+     11 Linear |R| = [32m5.180525e-09[39m
+     12 Linear |R| = [32m4.493952e-09[39m
+     13 Linear |R| = [32m3.836794e-09[39m
+     14 Linear |R| = [32m3.162952e-09[39m
+     15 Linear |R| = [32m2.821494e-09[39m
+     16 Linear |R| = [32m2.642815e-09[39m
+     17 Linear |R| = [32m2.370079e-09[39m
+     18 Linear |R| = [32m2.200365e-09[39m
+     19 Linear |R| = [32m1.958940e-09[39m
+     20 Linear |R| = [32m1.747656e-09[39m
+     21 Linear |R| = [32m1.634800e-09[39m
+     22 Linear |R| = [33m1.577637e-09[39m
+     23 Linear |R| = [33m1.501234e-09[39m
+     24 Linear |R| = [33m1.457842e-09[39m
+     25 Linear |R| = [33m1.389005e-09[39m
+     26 Linear |R| = [33m1.323426e-09[39m
+     27 Linear |R| = [32m1.225449e-09[39m
+     28 Linear |R| = [32m1.152162e-09[39m
+     29 Linear |R| = [32m1.032862e-09[39m
+     30 Linear |R| = [32m8.557439e-10[39m
+     31 Linear |R| = [32m7.715249e-10[39m
+     32 Linear |R| = [32m7.231484e-10[39m
+     33 Linear |R| = [33m6.880013e-10[39m
+     34 Linear |R| = [33m6.586780e-10[39m
+     35 Linear |R| = [33m6.283754e-10[39m
+     36 Linear |R| = [33m6.062223e-10[39m
+     37 Linear |R| = [33m5.788056e-10[39m
+     38 Linear |R| = [33m5.622562e-10[39m
+     39 Linear |R| = [33m5.448045e-10[39m
+     40 Linear |R| = [33m5.401917e-10[39m
+     41 Linear |R| = [33m5.354303e-10[39m
+     42 Linear |R| = [33m5.269926e-10[39m
+     43 Linear |R| = [32m4.975365e-10[39m
+     44 Linear |R| = [33m4.897108e-10[39m
+     45 Linear |R| = [32m4.406761e-10[39m
+     46 Linear |R| = [32m3.760612e-10[39m
+     47 Linear |R| = [32m3.226412e-10[39m
+     48 Linear |R| = [32m2.707636e-10[39m
+     49 Linear |R| = [32m2.212285e-10[39m
+     50 Linear |R| = [32m1.866975e-10[39m
+     51 Linear |R| = [32m1.549949e-10[39m
+     52 Linear |R| = [32m1.261889e-10[39m
+     53 Linear |R| = [32m1.018493e-10[39m
+     54 Linear |R| = [32m7.929791e-11[39m
+     55 Linear |R| = [32m5.473780e-11[39m
+     56 Linear |R| = [32m3.827635e-11[39m
+     57 Linear |R| = [32m2.750182e-11[39m
+     58 Linear |R| = [32m1.878426e-11[39m
+     59 Linear |R| = [32m1.277452e-11[39m
+     60 Linear |R| = [32m8.511578e-12[39m
+     61 Linear |R| = [32m6.971759e-12[39m
+     62 Linear |R| = [32m5.903681e-12[39m
+     63 Linear |R| = [32m5.088802e-12[39m
+     64 Linear |R| = [32m4.457924e-12[39m
+     65 Linear |R| = [32m4.135719e-12[39m
+     66 Linear |R| = [32m3.814895e-12[39m
+     67 Linear |R| = [32m3.415298e-12[39m
+     68 Linear |R| = [32m3.099692e-12[39m
+     69 Linear |R| = [32m2.621205e-12[39m
+     70 Linear |R| = [32m2.102312e-12[39m
+     71 Linear |R| = [32m1.688409e-12[39m
+     72 Linear |R| = [32m1.529207e-12[39m
+     73 Linear |R| = [32m1.375140e-12[39m
+     74 Linear |R| = [33m1.319932e-12[39m
+     75 Linear |R| = [32m1.205174e-12[39m
+     76 Linear |R| = [32m1.132377e-12[39m
+     77 Linear |R| = [33m1.083391e-12[39m
+     78 Linear |R| = [33m1.065090e-12[39m
+     79 Linear |R| = [33m1.035334e-12[39m
+     80 Linear |R| = [33m1.006646e-12[39m
+     81 Linear |R| = [33m9.680864e-13[39m
+     82 Linear |R| = [33m9.325778e-13[39m
+     83 Linear |R| = [33m8.870982e-13[39m
+     84 Linear |R| = [32m7.783374e-13[39m
+     85 Linear |R| = [32m6.610640e-13[39m
+     86 Linear |R| = [32m4.905067e-13[39m
+     87 Linear |R| = [32m3.635756e-13[39m
+     88 Linear |R| = [32m2.558700e-13[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 88
+      Line search: Using full step: fnorm 2.995030322143e-07 gnorm 2.583277721743e-13
+ 3 Nonlinear |R| = [32m2.583278e-13[39m
+    |residual|_2 of individual variables:
+                      vel_x: 8.13512e-14
+                      vel_y: 7.85888e-14
+                      vel_z: 2.31958e-13
+                      p:     1.15893e-14
+Nonlinear solve converged due to CONVERGED_FNORM_RELATIVE iterations 3
+[32m Solve Converged![39m
+
+Outlier Variable Residual Norms:
+  vel_z: [31m2.319584e-13[39m
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | flow_in        | flow_out       | memory         |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |  -9.801000e-01 |   9.801000e-01 |   6.052000e+03 |
++----------------+----------------+----------------+----------------+
+
+
+FINAL:
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | flow_in        | flow_out       | memory         |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |  -9.801000e-01 |   9.801000e-01 |   6.052000e+03 |
+|   2.000000e+00 |  -9.801000e-01 |   9.801000e-01 |   6.052000e+03 |
++----------------+----------------+----------------+----------------+
+
+Outputing exodus   [[33m  1.62 s[39m]
+Application 93560529 network throttled: 1 node throttled, 00:07:29 node-seconds
+Application 93560529 balanced injection 100, after throttle 63
+Application 93560529 resources: utime ~2790s, stime ~921s, Rss ~231228, inblocks ~83751, outblocks ~233932

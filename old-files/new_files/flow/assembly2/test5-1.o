@@ -1,0 +1,159 @@
+----------------------------------------
+Begin Torque Prologue on nid25354
+at Wed Oct 21 17:58:22 CDT 2020
+Job Id:			11645130.bw
+Username:		froberto
+Group:			ILL_bbcc
+Job name:		masters-loop
+Requested resources:	nodes=1:ppn=32:xe,walltime=00:30:00,neednodes=1:ppn=32:xe
+Queue:			debug
+Account:		bbcc
+End Torque Prologue:  0.095 elapsed
+----------------------------------------
+
+
+
+
+/var/spool/torque/mom_priv/jobs/11645130.bw.SC: line 56: /projects/sciteam/bbcc/source_me_for_MOOSE: Permission denied
+
+
+Framework Information:
+MOOSE Version:           git commit f052e463d8 on 2019-11-13
+LibMesh Version:         143b57032761c71a1df09c59ffc692bb4f198a0c
+PETSc Version:           3.9.3
+Current Time:            Wed Oct 21 17:58:43 2020
+Executable Timestamp:    Wed Oct 21 17:58:25 2020
+
+Parallelism:
+  Num Processors:          16
+  Num Threads:             1
+
+Mesh: 
+  Parallel Type:           replicated
+  Mesh Dimension:          3
+  Spatial Dimension:       3
+  Nodes:                   
+    Total:                 2634
+    Local:                 201
+  Elems:                   
+    Total:                 12240
+    Local:                 754
+  Num Subdomains:          1
+  Num Partitions:          16
+  Partitioner:             metis
+
+Nonlinear System:
+  Num DOFs:                10536
+  Num Local DOFs:          804
+  Variables:               { "vel_x" "vel_y" "vel_z" "p" } 
+  Finite Element Types:    "LAGRANGE" 
+  Approximation Orders:    "FIRST" 
+
+Relationship Managers:
+  Default:                 libMesh::DefaultCoupling x 2
+
+Execution Information:
+  Executioner:             Steady
+  Solver Mode:             NEWTON
+  MOOSE Preconditioner:    SMP
+
+
+[33m
+*** Warning ***
+/mnt/a/u/sciteam/froberto/thermo/ns06C.i:75: unused parameter 'BCs/vel_x_null/preset'
+/mnt/a/u/sciteam/froberto/thermo/ns06C.i:82: unused parameter 'BCs/vel_y_null/preset'
+/mnt/a/u/sciteam/froberto/thermo/ns06C.i:90: unused parameter 'BCs/vel_z_no_slip/preset'
+/mnt/a/u/sciteam/froberto/thermo/ns06C.i:98: unused parameter 'BCs/vel_z_null/preset'
+[39m
+
+Postprocessor Values:
++----------------+----------------+----------------+
+| time           | flow_in        | flow_out       |
++----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
++----------------+----------------+----------------+
+
+ 0 Nonlinear |R| = [32m4.492830e+03[39m
+      0 Linear |R| = [32m4.492830e+03[39m
+      1 Linear |R| = [32m3.896455e-10[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 4.492829691853e+03 gnorm 1.795447020686e+03
+ 1 Nonlinear |R| = [32m1.795447e+03[39m
+      0 Linear |R| = [32m1.795447e+03[39m
+      1 Linear |R| = [32m1.605257e-09[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 1.453011579636e+03
+      Line search: Quadratically determined step, lambda=2.5824346833234518e-01
+ 2 Nonlinear |R| = [32m1.453012e+03[39m
+      0 Linear |R| = [32m1.453012e+03[39m
+      1 Linear |R| = [32m5.574261e-10[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 1.453011579636e+03 gnorm 1.019777028495e+03
+ 3 Nonlinear |R| = [32m1.019777e+03[39m
+      0 Linear |R| = [32m1.019777e+03[39m
+      1 Linear |R| = [32m1.901388e-11[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 1.019777028495e+03 gnorm 6.279520644025e+02
+ 4 Nonlinear |R| = [32m6.279521e+02[39m
+      0 Linear |R| = [32m6.279521e+02[39m
+      1 Linear |R| = [32m2.319596e-12[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 6.279520644025e+02 gnorm 3.927551080581e+02
+ 5 Nonlinear |R| = [32m3.927551e+02[39m
+      0 Linear |R| = [32m3.927551e+02[39m
+      1 Linear |R| = [32m4.174030e-13[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 3.927551080581e+02 gnorm 3.640484391363e+02
+ 6 Nonlinear |R| = [32m3.640484e+02[39m
+      0 Linear |R| = [32m3.640484e+02[39m
+      1 Linear |R| = [32m4.975585e-13[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 3.640484391363e+02 gnorm 9.985100057445e+01
+ 7 Nonlinear |R| = [32m9.985100e+01[39m
+      0 Linear |R| = [32m9.985100e+01[39m
+      1 Linear |R| = [32m1.863628e-13[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 9.985100057445e+01 gnorm 6.256733712768e+00
+ 8 Nonlinear |R| = [32m6.256734e+00[39m
+      0 Linear |R| = [32m6.256734e+00[39m
+      1 Linear |R| = [32m5.432023e-15[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 6.256733712768e+00 gnorm 9.456036743704e-02
+ 9 Nonlinear |R| = [32m9.456037e-02[39m
+      0 Linear |R| = [32m9.456037e-02[39m
+      1 Linear |R| = [32m4.551112e-17[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 9.456036743704e-02 gnorm 2.782055687297e-05
+10 Nonlinear |R| = [32m2.782056e-05[39m
+      0 Linear |R| = [32m2.782056e-05[39m
+      1 Linear |R| = [32m1.381486e-20[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 2.782055687297e-05 gnorm 1.086670522992e-10
+11 Nonlinear |R| = [32m1.086671e-10[39m
+Nonlinear solve converged due to CONVERGED_FNORM_RELATIVE iterations 11
+[32m Solve Converged![39m
+
+Outlier Variable Residual Norms:
+  p: [31m1.086669e-10[39m
+
+Postprocessor Values:
++----------------+----------------+----------------+
+| time           | flow_in        | flow_out       |
++----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |  -1.134730e+04 |   1.134730e+04 |
++----------------+----------------+----------------+
+
+
+FINAL:
+
+Postprocessor Values:
++----------------+----------------+----------------+
+| time           | flow_in        | flow_out       |
++----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |  -1.134730e+04 |   1.134730e+04 |
+|   2.000000e+00 |  -1.134730e+04 |   1.134730e+04 |
++----------------+----------------+----------------+
+
+Application 93617211 resources: utime ~209s, stime ~36s, Rss ~68660, inblocks ~11242, outblocks ~10416

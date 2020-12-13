@@ -1,0 +1,214 @@
+----------------------------------------
+Begin Torque Prologue on nid25425
+at Wed Oct 21 18:42:35 CDT 2020
+Job Id:			11645150.bw
+Username:		froberto
+Group:			ILL_bbcc
+Job name:		masters-loop
+Requested resources:	nodes=1:ppn=32:xe,walltime=00:30:00,neednodes=1:ppn=32:xe
+Queue:			normal
+Account:		bbcc
+End Torque Prologue:  0.146 elapsed
+----------------------------------------
+
+
+
+
+/var/spool/torque/mom_priv/jobs/11645150.bw.SC: line 56: /projects/sciteam/bbcc/source_me_for_MOOSE: Permission denied
+
+Building mesh ...                                                                          [[33m  4.34 s[39m]
+Initializing equation system                                                               [[33m  1.10 s[39m]
+
+Framework Information:
+MOOSE Version:           git commit f052e463d8 on 2019-11-13
+LibMesh Version:         143b57032761c71a1df09c59ffc692bb4f198a0c
+PETSc Version:           3.9.3
+Current Time:            Wed Oct 21 18:43:00 2020
+Executable Timestamp:    Wed Oct 21 18:42:38 2020
+
+Parallelism:
+  Num Processors:          16
+  Num Threads:             1
+
+Mesh: 
+  Parallel Type:           replicated
+  Mesh Dimension:          3
+  Spatial Dimension:       3
+  Nodes:                   
+    Total:                 25392
+    Local:                 1894
+  Elems:                   
+    Total:                 131400
+    Local:                 8187
+  Num Subdomains:          1
+  Num Partitions:          16
+  Partitioner:             metis
+
+Nonlinear System:
+  Num DOFs:                101568
+  Num Local DOFs:          7576
+  Variables:               { "vel_x" "vel_y" "vel_z" "p" } 
+  Finite Element Types:    "LAGRANGE" 
+  Approximation Orders:    "FIRST" 
+
+Relationship Managers:
+  Default:                 libMesh::DefaultCoupling x 2
+
+Execution Information:
+  Executioner:             Steady
+  Solver Mode:             NEWTON
+  MOOSE Preconditioner:    SMP
+
+
+[33m
+*** Warning ***
+/mnt/a/u/sciteam/froberto/thermo/ns06C-1.i:75: unused parameter 'BCs/vel_x_null/preset'
+/mnt/a/u/sciteam/froberto/thermo/ns06C-1.i:82: unused parameter 'BCs/vel_y_null/preset'
+/mnt/a/u/sciteam/froberto/thermo/ns06C-1.i:90: unused parameter 'BCs/vel_z_no_slip/preset'
+/mnt/a/u/sciteam/froberto/thermo/ns06C-1.i:98: unused parameter 'BCs/vel_z_null/preset'
+[39m
+
+Postprocessor Values:
++----------------+----------------+----------------+
+| time           | flow_in        | flow_out       |
++----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
++----------------+----------------+----------------+
+
+ 0 Nonlinear |R| = [32m1.429797e+04[39m
+      0 Linear |R| = [32m1.429797e+04[39m
+      1 Linear |R| = [32m9.521009e-10[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 1.429797402152e+04 gnorm 4.499785458003e+03
+ 1 Nonlinear |R| = [32m4.499785e+03[39m
+      0 Linear |R| = [32m4.499785e+03[39m
+      1 Linear |R| = [32m6.337878e-08[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 7.166042890171e+04
+      Line search: Cubic step no good, shrinking lambda, current gnorm 8.363138584646e+03 lambda=1.0000000000000002e-02
+      Line search: Cubic step no good, shrinking lambda, current gnorm 4.545834202157e+03 lambda=1.0000000000000002e-03
+      Line search: Cubically determined step, current gnorm 4.499611034482e+03 lambda=1.0000000000000003e-04
+ 2 Nonlinear |R| = [33m4.499611e+03[39m
+      0 Linear |R| = [32m4.499611e+03[39m
+      1 Linear |R| = [32m1.043188e-07[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 4.416414952878e+03
+      Line search: Quadratically determined step, lambda=1.0000000000000001e-01
+ 3 Nonlinear |R| = [33m4.416415e+03[39m
+      0 Linear |R| = [32m4.416415e+03[39m
+      1 Linear |R| = [32m4.554683e-08[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 4.593969422042e+03
+      Line search: Cubically determined step, current gnorm 4.311843132855e+03 lambda=3.5799795861026218e-02
+ 4 Nonlinear |R| = [33m4.311843e+03[39m
+      0 Linear |R| = [32m4.311843e+03[39m
+      1 Linear |R| = [32m3.125685e-09[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 4.311843132855e+03 gnorm 3.757449473211e+03
+ 5 Nonlinear |R| = [32m3.757449e+03[39m
+      0 Linear |R| = [32m3.757449e+03[39m
+      1 Linear |R| = [32m6.360803e-10[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 3.331248563728e+03
+      Line search: Quadratically determined step, lambda=2.0157974971300913e-01
+ 6 Nonlinear |R| = [32m3.331249e+03[39m
+      0 Linear |R| = [32m3.331249e+03[39m
+      1 Linear |R| = [32m2.517217e-09[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 3.899803127783e+03
+      Line search: Cubically determined step, current gnorm 3.183782812117e+03 lambda=1.8436667410798552e-02
+ 7 Nonlinear |R| = [33m3.183783e+03[39m
+      0 Linear |R| = [32m3.183783e+03[39m
+      1 Linear |R| = [32m5.528829e-10[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 3.305104090946e+03
+      Line search: Cubically determined step, current gnorm 3.037271163167e+03 lambda=3.7509482569743548e-02
+ 8 Nonlinear |R| = [33m3.037271e+03[39m
+      0 Linear |R| = [32m3.037271e+03[39m
+      1 Linear |R| = [32m3.459478e-10[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 2.709714358912e+03
+      Line search: Quadratically determined step, lambda=1.0000000000000001e-01
+ 9 Nonlinear |R| = [32m2.709714e+03[39m
+      0 Linear |R| = [32m2.709714e+03[39m
+      1 Linear |R| = [32m9.088473e-11[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 2.038947276342e+03
+      Line search: Quadratically determined step, lambda=3.0903319660758161e-01
+10 Nonlinear |R| = [32m2.038947e+03[39m
+      0 Linear |R| = [32m2.038947e+03[39m
+      1 Linear |R| = [32m3.883581e-11[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 1.354239544074e+03
+      Line search: Quadratically determined step, lambda=4.5052384289874098e-01
+11 Nonlinear |R| = [32m1.354240e+03[39m
+      0 Linear |R| = [32m1.354240e+03[39m
+      1 Linear |R| = [32m5.273906e-11[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 1.157329238467e+03
+      Line search: Quadratically determined step, lambda=2.0155106192586128e-01
+12 Nonlinear |R| = [32m1.157329e+03[39m
+      0 Linear |R| = [32m1.157329e+03[39m
+      1 Linear |R| = [32m2.378131e-11[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 1.029975606098e+03
+      Line search: Quadratically determined step, lambda=1.2717480334656625e-01
+13 Nonlinear |R| = [32m1.029976e+03[39m
+      0 Linear |R| = [32m1.029976e+03[39m
+      1 Linear |R| = [32m8.404375e-12[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 9.532871044652e+02
+      Line search: Quadratically determined step, lambda=1.0000000000000001e-01
+14 Nonlinear |R| = [32m9.532871e+02[39m
+      0 Linear |R| = [32m9.532871e+02[39m
+      1 Linear |R| = [32m2.514991e-10[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 9.151575167368e+02
+      Line search: Quadratically determined step, lambda=1.0000000000000001e-01
+15 Nonlinear |R| = [33m9.151575e+02[39m
+      0 Linear |R| = [32m9.151575e+02[39m
+      1 Linear |R| = [32m1.297433e-11[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 9.116425791097e+02
+      Line search: Quadratically determined step, lambda=1.8220547189076478e-01
+16 Nonlinear |R| = [33m9.116426e+02[39m
+      0 Linear |R| = [32m9.116426e+02[39m
+      1 Linear |R| = [32m2.980616e-11[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 1.016790990820e+03
+      Line search: Cubically determined step, current gnorm 9.115159818794e+02 lambda=2.1388205884348307e-02
+17 Nonlinear |R| = [33m9.115160e+02[39m
+      0 Linear |R| = [32m9.115160e+02[39m
+      1 Linear |R| = [32m4.201183e-11[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 9.570989182905e+02
+      Line search: Cubically determined step, current gnorm 7.766642698214e+02 lambda=3.4283913794856236e-02
+18 Nonlinear |R| = [32m7.766643e+02[39m
+      0 Linear |R| = [32m7.766643e+02[39m
+      1 Linear |R| = [32m5.730529e-12[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 6.815152452570e+02
+      Line search: Quadratically determined step, lambda=1.0818713475075876e-01
+19 Nonlinear |R| = [32m6.815152e+02[39m
+      0 Linear |R| = [32m6.815152e+02[39m
+      1 Linear |R| = [32m3.693917e-10[39m
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: gnorm after quadratic fit 2.641941846932e+03
+      Line search: Cubic step no good, shrinking lambda, current gnorm 7.442196867461e+02 lambda=1.0000000000000002e-02
+      Line search: Cubically determined step, current gnorm 6.743635223639e+02 lambda=1.0000000000000002e-03
+20 Nonlinear |R| = [33m6.743635e+02[39m
+Nonlinear solve did not converge due to DIVERGED_MAX_IT iterations 20
+[31m Solve Did NOT Converge![39m
+Aborting as solve did not converge
+
+FINAL:
+
+Postprocessor Values:
++----------------+----------------+----------------+
+| time           | flow_in        | flow_out       |
++----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |   0.000000e+00 |   0.000000e+00 |
++----------------+----------------+----------------+
+
+Application 93617407 resources: utime ~4913s, stime ~96s, Rss ~268672, inblocks ~21029, outblocks ~102450
