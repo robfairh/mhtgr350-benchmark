@@ -1,0 +1,125 @@
+
+Building mesh ..                                                                           [  3.05 s]
+Caching mesh information                                                                   [  1.63 s]
+Initializing equation system ...                                                           [  4.54 s]
+Caching mesh information                                                                   [  1.52 s]
+
+Framework Information:
+MOOSE Version:           git commit 6a54c7ffdc on 2020-07-08
+LibMesh Version:         34618d0cd8517ebf15e1ecbbcb20d588228e4690
+PETSc Version:           3.13.3
+SLEPc Version:           3.13.3
+Current Time:            Wed Oct 14 15:31:53 2020
+Executable Timestamp:    Fri Sep 18 09:15:57 2020
+
+Parallelism:
+  Num Processors:          8
+  Num Threads:             1
+
+Mesh: 
+  Parallel Type:           replicated
+  Mesh Dimension:          3
+  Spatial Dimension:       3
+  Nodes:                   
+    Total:                 1764441
+    Local:                 220941
+  Elems:                   
+    Total:                 200000
+    Local:                 25000
+  Num Subdomains:          1
+  Num Partitions:          8
+  Partitioner:             metis
+
+Nonlinear System:
+  Num DOFs:                968484
+  Num Local DOFs:          121484
+  Variables:               { "vel_x" "vel_y" "vel_z" "p" } 
+  Finite Element Types:    "LAGRANGE" 
+  Approximation Orders:    "FIRST" 
+
+Execution Information:
+  Executioner:             Steady
+  Solver Mode:             NEWTON
+  MOOSE Preconditioner:    SMP
+
+LEGACY MODES ENABLED:
+ Default for parameter preset = false for all DirichletBC and ADDirichletBC objects.
+ Set use_legacy_dirichlet_bc = false in the application to change to the preferred behavior.
+
+LEGACY MODES ENABLED:
+ This application uses the legacy material output option: material properties are output only on TIMESTEP_END, not INITIAL. To remove this message, set 'use_legacy_material_output' to false in this application. If there are gold output files that contain material property output for which output occurs on INITIAL, then these will generate diffs due to zero values being stored, and these tests should be re-golded.
+
+Caching mesh information                                                                   [  1.66 s]
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | flow_in        | flow_out       | memory         |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
++----------------+----------------+----------------+----------------+
+
+Computing initial residual                                                                 [  1.98 s]
+ 0 Nonlinear |R| = 1.199880e+01
+    |residual|_2 of individual variables:
+                      vel_x: 0
+                      vel_y: 0
+                      vel_z: 11.9988
+                      p:     0
+      0 Linear |R| = 1.199880e+01
+      1 Linear |R| = 9.342496e-11
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 1.199880000000e+01 gnorm 3.638378110622e-02
+ 1 Nonlinear |R| = 3.638378e-02
+    |residual|_2 of individual variables:
+                      vel_x: 0.00461441
+                      vel_y: 0.00461441
+                      vel_z: 0.0352321
+                      p:     0.00631631
+      0 Linear |R| = 3.638378e-02
+      1 Linear |R| = 7.039504e-14
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 3.638378110622e-02 gnorm 1.563684793034e-05
+ 2 Nonlinear |R| = 1.563685e-05
+    |residual|_2 of individual variables:
+                      vel_x: 7.67735e-06
+                      vel_y: 7.67735e-06
+                      vel_z: 1.11937e-05
+                      p:     1.15231e-06
+      0 Linear |R| = 1.563685e-05
+      1 Linear |R| = 7.245004e-19
+  Linear solve converged due to CONVERGED_RTOL iterations 1
+      Line search: Using full step: fnorm 1.563684793034e-05 gnorm 3.461259054566e-11
+ 3 Nonlinear |R| = 3.461259e-11
+    |residual|_2 of individual variables:
+                      vel_x: 2.2308e-11
+                      vel_y: 2.50752e-11
+                      vel_z: 6.86892e-12
+                      p:     4.94348e-12
+Nonlinear solve converged due to CONVERGED_FNORM_RELATIVE iterations 3
+ Solve Converged!
+
+Outlier Variable Residual Norms:
+  vel_y: 2.507519e-11
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | flow_in        | flow_out       | memory         |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |  -9.801000e-01 |   9.801000e-01 |   1.854400e+04 |
++----------------+----------------+----------------+----------------+
+
+
+FINAL:
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | flow_in        | flow_out       | memory         |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |  -9.801000e-01 |   9.801000e-01 |   1.854400e+04 |
+|   2.000000e+00 |  -9.801000e-01 |   9.801000e-01 |   1.854400e+04 |
++----------------+----------------+----------------+----------------+
+
+Outputting exodus 
+....                                                                                       [  5.50 s]
